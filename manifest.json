@@ -1,0 +1,26 @@
+{
+    "manifest_version": 3,
+    "name": "Web-to-Sheet Logger",
+    "version": "1.0",
+    "description": "Save highlighted web content to Google Sheets",
+    "icons": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "permissions": ["activeTab", "storage", "contextMenus", "scripting", "notifications"],
+    "host_permissions": ["*://*/*"],
+    "background": {
+      "service_worker": "service-worker.js"
+    },
+    "content_scripts": [{
+      "matches": ["<all_urls>"],
+      "js": ["content-scripts/content.js"],
+      "css": ["content-scripts/floating-button.css"],
+      "run_at": "document_idle"
+    }],
+    "action": {
+      "default_popup": "popup/popup.html"
+    }
+  }
+  
